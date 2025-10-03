@@ -12,7 +12,7 @@ import { store } from "./store";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <HashRouter basename="/simple-E-Commerce/">
+      <HashRouter>
         <App />
       </HashRouter>
     </Provider>
