@@ -1,0 +1,7 @@
+.container .card {
+  margin: 60px 0;
+}
+.container .card:hover {
+  transform: none !important;
+  transition: none !important;
+}
