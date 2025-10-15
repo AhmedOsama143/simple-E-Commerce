@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 import Layout from "./components/Layout/Layout";
 import Home from "./components/Hero/Hero";
@@ -12,27 +12,11 @@ import ErrorPage from "./components/ErrorPage/ErrorPage";
 import Register from "./components/Register/Register";
 
 export default function App() {
-  const [isRegistered, setIsRegistered] = useState(
-    !!localStorage.getItem("user")
-  );
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setIsRegistered(!!localStorage.getItem("user"));
-    };
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
-
   return (
     <Routes>
       <Route path="/register" element={<Register />} />
 
-      <Route
-        path="/"
-        element={isRegistered ? <Layout /> : <Navigate to="/register" />}
-      >
+      <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="home" element={<Home />} />
         <Route path="about" element={<About />} />
